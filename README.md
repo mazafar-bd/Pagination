@@ -31,6 +31,7 @@ run as iisexpress and change the .AddConsole(); to .AddDebug(); in startup.cs fi
                 .AddConsole();
               //.AddDebug();
         });
+```
 
 step 4.
 
@@ -43,7 +44,6 @@ step 5.
 you can uninstall the nuget package from Pagination.Sample.WebAPI project
  <PackageReference Include="BS23.Pagination.EfCore" Version="1.1.1" />
  and add the reference from BS23.Pagination.EfCore project or vise versa
-```
 
 
 
