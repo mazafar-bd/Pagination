@@ -24,36 +24,44 @@ namespace Pagination.Sample.WebAPI.Controllers
 
         private IQueryable<TestTable> TestQuery(TestDataQueryArgs args)
         {
-            IQueryable<TestTable> testQuery = _paginationDbContext.TestTables.AsQueryable();
+            IQueryable<TestTable> testQuery =
+                _paginationDbContext.TestTables.AsQueryable();
 
             if (args.Id > 0)
                 testQuery = testQuery.Where(t => t.Id == args.Id);
 
             if (!string.IsNullOrEmpty(args.Name))
-                testQuery = testQuery.Where(t => t.Name.Contains(args.Name));
+                testQuery = testQuery
+                    .Where(t => t.Name.Contains(args.Name));
 
             if (!string.IsNullOrEmpty(args.Address))
-                testQuery = testQuery.Where(t => t.Address.Contains(args.Address));
+                testQuery = testQuery
+                    .Where(t => t.Address.Contains(args.Address));
 
             if (!string.IsNullOrEmpty(args.Phone))
-                testQuery = testQuery.Where(t => t.Phone.Contains(args.Phone));
+                testQuery = testQuery
+                    .Where(t => t.Phone.Contains(args.Phone));
 
             return testQuery;
         }
 
       
         [HttpGet("automapper")]
-        public async Task<IActionResult> GetTestDataUsingAutomapper([FromQuery] TestDataQueryArgs args)
+        public async Task<IActionResult> 
+            GetTestDataUsingAutomapper([FromQuery] TestDataQueryArgs args)
         {
             IQueryable<TestTable> testQuery = this.TestQuery(args);
-            PagedViewModel<TestTableViewModel> testDataWithAutomappper = await _pagingManager.PageAsync<TestTableViewModel, TestDataQueryArgs>(testQuery, args);
+            PagedViewModel<TestTableViewModel> testDataWithAutomappper = 
+                await _pagingManager
+                .PageAsync<TestTableViewModel, TestDataQueryArgs>(testQuery, args);
 
             return Ok(testDataWithAutomappper);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> GetTestData([FromQuery] TestDataQueryArgs args)
+        public async Task<IActionResult> 
+            GetTestData([FromQuery] TestDataQueryArgs args)
         {
             IQueryable<TestTable> testQuery = this.TestQuery(args);
             IQueryable<TestTableViewModel> testProjection = testQuery

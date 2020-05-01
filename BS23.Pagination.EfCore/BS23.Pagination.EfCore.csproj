@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <RepositoryUrl>https://github.com/mazafar-bd/Pagination</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
+    <PackageProjectUrl>https://github.com/mazafar-bd/Pagination</PackageProjectUrl>
+    <Version>1.1.1</Version>
+    <Description>From Any IQueryable of T or IQueryable we can paginate the data with any provider like SQL Server</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags />
+    <Authors>Md Abu Zafar</Authors>
+    <Company>Brain Station 23 Ltd</Company>
+    <Product>Entity Framework</Product>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
